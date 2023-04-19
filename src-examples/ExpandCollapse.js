@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SuperTreeView from '../dist/main.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { monokai as style } from 'react-syntax-highlighter/dist/styles';
-import '../dist/style.css';
+import { monokai as style } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SuperTreeView from '../dist/main.js';
+import '../dist/main.css';
 
 export default class extends Component {
     constructor (){

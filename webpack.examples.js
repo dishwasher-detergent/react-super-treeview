@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const examplesFolder = './src-examples/';
@@ -17,7 +16,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src-examples'),
-                loaders: ['babel-loader'],
+                use: ['babel-loader'],
             },
             {
                 test: /\.s?css/,

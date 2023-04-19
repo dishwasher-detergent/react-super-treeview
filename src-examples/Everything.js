@@ -1,9 +1,7 @@
+import { cloneDeep } from 'lodash';
 import React, { Component } from 'react';
+import '../dist/main.css';
 import SuperTreeView from '../dist/main.js';
-import { cloneDeep, find } from 'lodash';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { monokai as style } from 'react-syntax-highlighter/dist/styles';
-import '../dist/style.css';
 
 export default class extends Component {
     constructor (){

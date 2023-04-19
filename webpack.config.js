@@ -1,9 +1,7 @@
 'use strict';
 
 const path = require('path');
-const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const config = {
@@ -18,33 +16,38 @@ const config = {
         library: 'ExpandableTree',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 include: /src/,
-                loaders: ['babel-loader'],
+                use: ['babel-loader'],
             },
             {
-                test: /\.scss/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
+                test: /\.s[ac]ss$/i,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  "style-loader",
+                  // Translates CSS into CommonJS
+                  "css-loader",
+                  // Compiles Sass to CSS
+                  "sass-loader",
+                ],
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('style.css'),
-        new CopyWebpackPlugin([{
-            from: 'src/style.scss',
-            dest: 'dist/[name].[ext]'
-        }])
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: 'src/style.scss',
+                to: 'dist/[name].[ext]'
+            }]
+        })
     ],
 
     externals: [
       nodeExternals({
         // load non-javascript files with extensions, presumably via loaders
-        whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+        allowlist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
       })
     ]
 }

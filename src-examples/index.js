@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import SuperTreeView from '../dist/main.js';
-import { camelCase } from 'lodash';
 import Basic from './Basic';
 import ExpandCollapse from './ExpandCollapse';
 import Checkbox from './Checkbox';
